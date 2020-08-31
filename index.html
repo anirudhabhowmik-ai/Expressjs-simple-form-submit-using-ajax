@@ -1,0 +1,30 @@
+<html>
+   <body>
+      <div style="float: left;position: absolute;top:30%;bottom: 0;left: 40%;right: 0;margin: auto;">
+        <form>
+            First Name: <input type = "text" name = "first_name" id="firstname">  <br /> 
+            Last Name: <input type = "text" name = "last_name" id="lastname"> <br />   <br />
+            <input type = "submit" id="enter" value = "Submit">
+        </form>
+      </div>
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script>
+        $('#enter').click(function(){  
+           $.ajax({ 
+                 url: 'http://localhost:3000/submitdata',
+                 type: 'POST',
+                 cache: false, 
+                 data: { first_name: $('#firstname').val(), last_name:$('#lastname').val() }, 
+                 success: function(data){
+                    alert('Success!')
+                 }
+                 , error: function(data){
+                    alert('err')
+                 }
+              })
+        });      
+     </script>     
+   </body>
+</html>
